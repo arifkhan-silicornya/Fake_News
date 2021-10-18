@@ -1,0 +1,33 @@
+<!DOCTYPE html> {% extends 'layout.html' %} {% block title %}home {% endblock %}{% block content %}
+<!-- ........................START.................... -->
+<!-- ........................url input section .................... -->
+<section class="container-fluid url-section mb-0" style="height: auto;">
+
+    <span class="text-capitalize font-weight-bold d-flex justify-content-center h2">News Checking</span>
+    <form action="actionFakeNews" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group mb-3 mt-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text text-dark font-weight-bold d-flex align-items-start">Enter News :</span>
+            </div>
+            <textarea name="url" class="form-control text-dark bg-white" placeholder="Enter Your News to Check" cols="30" rows="10" required id="inputurl">{% if b %}{{b}}{% endif %}</textarea>
+            
+        </div>
+        <div class="input-group-append mb-3">
+            <button class="btn btn-outline-success  px-5 " type="submit" onclick="checkempty();" id="checkButton">Check</button>
+        </div>
+    </form>
+    {% if aa and b %}
+    <div class="font-weight-bold text-dark mb-3" style="font-size: x-large;">Your Given News : <span class="text-success">{{aa}}</span></div>
+    <div class="font-weight-bold text-dark overflow-auto border border-dark p-4" style="height: 200px;">News : <span class="text-success">{{b}}</span></div>
+    {% endif %}
+    {% if a and b %}
+    <div class="font-weight-bold text-dark mb-3" style="font-size: x-large;">Your Given News : <span class="text-danger">{{a}}</span></div>
+    <div class="font-weight-bold text-dark overflow-auto border border-dark p-4" style="height: 200px;">News : <span class="text-danger">{{b}}</span></div>
+    {% endif %} 
+    {% if z and b %}
+    <div class="font-weight-bold text-danger mb-3" style="font-size: large;">Invalid News: <span class="text-danger">{{z}}</span></div>
+    <div class="font-weight-bold text-danger" style="font-size: large;">Your Given News : <span class="text-danger">{{b}}</span></div>
+    {% endif %}
+</section>
+{% endblock %}

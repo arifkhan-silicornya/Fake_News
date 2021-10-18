@@ -1,0 +1,27 @@
+<!DOCTYPE html> {% extends 'layout.html' %} {% block title %} crawling {% endblock %}
+
+{% block content %}
+<!-- ........................START.................... -->
+<!-- ........................url input section .................... -->
+<section class="container-fluid url-section mb-0" style="height: auto;">
+
+    <span class="text-capitalize font-weight-bold d-flex justify-content-center h2">News Crawling</span>
+    <form action="crawlNews" method="post" enctype="multipart/form-data" class="border border-success p-3">
+        {% csrf_token %}
+        <div class="input-group mb-3 mt-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text text-dark font-weight-bold d-flex align-items-start">Click button to crawl Today NEWS :</span>
+                <button class="btn btn-outline-success  px-5 " type="submit"  id="checkButton">Crawl</button>
+            </div>
+        </div>
+    </form>
+    <!-- <form action="cleanData" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group-append mb-3">
+            <span>Click button to Clean Data</span>
+            <button class="btn btn-outline-success  px-5 " type="submit"  id="checkButton">Check</button>
+        </div>
+    </form> -->
+    
+</section>
+{% endblock %}

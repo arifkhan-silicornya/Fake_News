@@ -1,0 +1,209 @@
+<!DOCTYPE html> {% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{% block title %} {% endblock %}</title>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/sticky-dark-top-nav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <!--  ---for login---  start -->
+    <link rel="stylesheet" href="{% static 'assets/css/login/Google-Style-Login.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/login/Login-Animate.css' %}">
+    <!--  ---for login---  end -->
+
+    <!-- -----------for reset page--------- -->
+    <link rel="stylesheet" href="{% static 'assets/css/reset/resetPass.css' %}">
+
+
+    <!-- for signup -->
+    <link rel="stylesheet" href="{% static 'assets/css/signup/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+
+    <!-- -----------for contact page--------- -->
+    <link rel="stylesheet" href="{% static 'assets/css/contact/styles.css' %}">
+
+    <!-- -----------for contact page--------- -->
+    <link rel="stylesheet" href="{% static 'assets/css/contact/styles.css' %}">
+
+
+    <style>
+        .gotTop {
+            position: fixed!important;
+            z-index: 100000!important;
+            bottom: 0px!important;
+            right: 0px!important;
+            display: none;
+            transition: 0.7s;
+        }
+        
+        .fa-arrow-alt-circle-up {
+            font-size: 45px;
+        }
+        
+         ::placeholder {
+            color: #797b7d!important;
+        }
+        
+        input[value] {
+            color: black!important;
+        }
+        
+        .form-control {
+            height: 40px;
+            box-shadow: none;
+            color: #000!important;
+        }
+        
+        .btn {
+            z-index: 1000!important;
+        }
+        
+        .preloader {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            z-index: 1000000;
+            background: #fff url("{% static 'assets/img/preloader/preloader_26.gif' %}") no-repeat center;
+        }
+        
+        .profile_picture_user {
+            height: 220px!important;
+            width: 220px!important;
+        }
+        
+        .profile-img-card {
+            height: 210px!important;
+            width: 210px!important;
+        }
+    </style>
+
+</head>
+
+<body onload="onloadMyFunction();" style="background-color: #e6e6e6;">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <div class="preloader" id="loader"></div>
+    <!-- preloader -->
+
+    <!-- ........................START.................... -->
+    <!-- This is header section . this section contain home contact about login and logout button -->
+
+    <nav class="navbar navbar-dark navbar-expand-md navbar-fixed-top navigation-clean-button sticky-top bg-success">
+        <div class="container ">
+            <div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav nav-right d-flex align-items-center">
+                    <li class="nav-item " role="presentation">
+                        <a class="nav-link active text-dark font-weight-bold " href="{% url 'index' %}" style="font-size: 2rem!important;">
+                            News Checking     
+                        </a>
+                    </li>
+                    <li class="nav-item " role="presentation"><a class="btn nav-link  border border-dark" href="{% url 'about' %}" style="color: #000000;">About Us</a></li>
+                    <li class="nav-item " role="presentation">
+                        <a class="btn nav-link border border-dark " href="{% url 'contact' %}" style="color: #000000;">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <p class="ml-auto navbar-text actions">
+                {% if user.is_authenticated %}
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'index' %}">{{user.username}}</a> 
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'actionCrawler' %}">Crawling</a> 
+                
+
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'logout' %}">Logout</a> {% else %}
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'login' %}">Login</a>
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'signup' %}">Sign Up</a> 
+                {% endif %}
+            </p>
+        </div>
+    </nav>
+    <!-- ........................END.................... -->
+
+
+    <!-- ........................START.................... -->
+    {% block content %} {% endblock %}
+    <!-- ........................END.................... -->
+
+
+    <!-- ........................START.................... -->
+    <!-- ........................Footer .................... -->
+    <footer class="footer  bg-success ml-0 mt-5 text-center  fixed-bottom font-weight-bold" style="font-size: 1.2rem;">
+        <div class="container mt-3 d-flex flex-row justify-content-between text-center">
+            <span class="float-left ml-0 text-center">Fake News Detection Copyright @ 2021. All Rights Reserved</span>
+            <span class="float-right footer-social-icon mr-0">
+                <ul class="d-flex flex-row">
+                    <li><a href="{% url 'index' %}" class="text-dark"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="{% url 'index' %}" class="text-dark"><i class="fab fa-google" aria-hidden="true"></i></a></li>
+                    <li><a href="{% url 'index' %}" class="text-dark"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>
+                </ul>
+            </span>
+        </div>
+    </footer>
+    <!-- --------- top button ------- -->
+
+    <a id="goTop" href="" class="btn btn-dark gotTop m-4 font-weight-bold p-2">
+        <i class="fal fa-arrow-alt-circle-up"></i>
+    </a>
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="{% static 'assets/js/smart-forms.min.js' %}"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script>
+        $(window).on("scroll", function() {
+            if ($(this).scrollTop() > 400) {
+                document.getElementById("goTop").style.display = "block";
+            } else {
+                document.getElementById("goTop").style.display = "none";
+            }
+        });
+
+        var preloader = document.getElementById("loader");
+
+
+        function onloadMyFunction() {
+            preloader.style.display = 'none';
+        }
+
+        function checkempty() {
+            var inputurl = document.getElementById("inputurl").value;
+            if (inputurl == "") {
+                alert('Input Field is Empty');
+                return
+            } else {
+                preloader.style.display = 'block';
+            }
+
+        }
+
+
+
+        // function goPython(){
+        //     $.ajax({
+        //       url: "../crawlapp/test.py",
+        //      context: document.body
+        //     }).done(function() {
+        //      alert('finished python script');;
+        //     });
+        // }
+    </script>
+    
+</body>
+
+</html>
