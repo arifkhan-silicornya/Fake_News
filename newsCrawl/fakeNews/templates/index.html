@@ -8,7 +8,7 @@
         {% csrf_token %}
         <div class="input-group mb-3 mt-5">
             <div class="input-group-prepend">
-                <span class="input-group-text text-dark font-weight-bold d-flex align-items-start">Enter News :</span>
+                <span class="input-group-text text-success font-weight-bold d-flex align-items-start" style="font-size: larger;">Enter News :</span>
             </div>
             <textarea name="url" class="form-control text-dark bg-white" placeholder="Enter Your News to Check" cols="30" rows="10" required id="inputurl">{% if b %}{{b}}{% endif %}</textarea>
             
