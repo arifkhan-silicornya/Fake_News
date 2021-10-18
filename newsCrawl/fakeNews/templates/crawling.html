@@ -15,6 +15,12 @@
             </div>
         </div>
     </form>
+
+    {% if d %}
+        <div>
+            <span > {{d}} </span>
+        </div>
+    {% endif %} 
     <!-- <form action="cleanData" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-group-append mb-3">

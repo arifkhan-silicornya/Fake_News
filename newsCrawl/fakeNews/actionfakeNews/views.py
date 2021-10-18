@@ -4,8 +4,6 @@ from .models import Authenticate_NEWS
 # Create your views here.
 
 
-
-
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -147,4 +145,3 @@ def actionFakeNews(request):
     else:
         data = {'d' : 'No Request Found'}
     return render(request,'index.html',data)
-

@@ -3,12 +3,12 @@
 <!-- ........................url input section .................... -->
 <section class="container-fluid url-section mb-0" style="height: auto;">
 
-    <span class="text-capitalize font-weight-bold d-flex justify-content-center h2">News Checking</span>
+    <span class="text-capitalize font-weight-bold d-flex justify-content-center h2 text-success">News Checking</span>
     <form action="actionFakeNews" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-group mb-3 mt-5">
             <div class="input-group-prepend">
-                <span class="input-group-text text-success font-weight-bold d-flex align-items-start" style="font-size: larger;">Enter News :</span>
+                <span class="input-group-text text-success font-weight-bold d-flex align-items-start " style="font-size: larger ;">Enter News :</span>
             </div>
             <textarea name="url" class="form-control text-dark bg-white" placeholder="Enter Your News to Check" cols="30" rows="10" required id="inputurl">{% if b %}{{b}}{% endif %}</textarea>
             

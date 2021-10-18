@@ -111,39 +111,22 @@
                             News Checking     
                         </a>
                     </li>
-                </ul>
-            </div>
-            <p class="ml-auto navbar-text actions">
-                <ul class="nav navbar-nav nav-right d-flex align-items-right">
-                    <li class="nav-item " role="presentation">
-                        <a class="btn nav-link  border border-dark" href="{% url 'about' %}" style="color: #000000;">About Us</a>
-                    </li>
+                    <li class="nav-item " role="presentation"><a class="btn nav-link  border border-dark" href="{% url 'about' %}" style="color: #000000;">About Us</a></li>
                     <li class="nav-item " role="presentation">
                         <a class="btn nav-link border border-dark " href="{% url 'contact' %}" style="color: #000000;">Contact</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav nav-right d-flex align-items-right">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item " role="presentation">
-                        <a class="btn nav-link  border border-dark" href="{% url 'index' %}" style="color: #000000;">{{user.username}}</a>
-                    </li>
-                    <li class="nav-item " role="presentation">
-                        <a class="btn nav-link border border-dark " href="{% url 'actionCrawler' %}" style="color: #000000;">Crawling</a> 
-                    </li>
-                    <li class="nav-item " role="presentation">
-                        <a class="btn nav-link border border-dark " href="{% url 'logout' %}" style="color: #000000;">Logout</a> 
-                    </li>
-                    {% else %}
+            </div>
+            <p class="ml-auto navbar-text actions">
+                {% if user.is_authenticated %}
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'index' %}">{{user.username}}</a> 
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'actionCrawler' %}">Crawling</a> 
+                
 
-                    <li class="nav-item " role="presentation">
-                        <a class="btn nav-link border border-dark " href="{% url 'login' %}" style="color: #000000;">Login</a>
-                    </li>
-
-                    <li class="nav-item " role="presentation">
-                        <a class="btn nav-link border border-dark " href="{% url 'signup' %}" style="color: #000000;">Sign Up</a> 
-                    </li>
-                    {% endif %}
-                </ul>
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'logout' %}">Logout</a> {% else %}
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'login' %}">Login</a>
+                <a class="btn border border-dark mx-0 text-dark" href="{% url 'signup' %}">Sign Up</a> 
+                {% endif %}
             </p>
         </div>
     </nav>
@@ -159,9 +142,9 @@
     <!-- ........................Footer .................... -->
     <footer class="footer  bg-success ml-0 mt-5 text-center  fixed-bottom font-weight-bold" style="font-size: 1.2rem;">
         <div class="container mt-3 d-flex flex-row justify-content-between text-center">
-            <span class="float-left ml-0 text-center text-white">Fake News Detection Copyright @ 2021. All Rights Reserved</span>
+            <span class="float-left ml-0 text-center text-white">Fake News Detection | Copyright @ 2021. All Rights Reserved</span>
             <span class="float-right footer-social-icon mr-0">
-                <ul class="d-flex flex-row">
+                <ul class="d-flex flex-row ">
                     <li><a href="{% url 'index' %}" class="text-white"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                     <li><a href="{% url 'index' %}" class="text-white"><i class="fab fa-google" aria-hidden="true"></i></a></li>
                     <li><a href="{% url 'index' %}" class="text-white"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>

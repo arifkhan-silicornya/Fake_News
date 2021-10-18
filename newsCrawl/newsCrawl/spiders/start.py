@@ -1,7 +1,5 @@
-from scrapy import cmdline
-
+import os
 
 def crawl():
-    cmdline.execute("scrapy crawl fakenews -o output.csv".split())
-
-# crawl()
+    cmd = 'scrapy crawl fakenews -o output.csv --nolog'
+    os.system(cmd)
