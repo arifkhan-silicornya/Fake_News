@@ -1,16 +1,9 @@
 from django.shortcuts import render
-from .models import Fake_NEWS
-from .models import Authenticate_NEWS
 # Create your views here.
 
 
 import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import classification_report
 import re
 import string
 import bangla
@@ -56,7 +49,7 @@ df["content"] = df["content"].apply(wordopt)
 x = df["content"]
 y = df["label"]
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.05)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.10)
 
 
 vectorization = TfidfVectorizer()

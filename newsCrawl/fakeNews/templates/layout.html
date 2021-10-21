@@ -108,26 +108,39 @@
                 <ul class="nav navbar-nav nav-right d-flex align-items-center">
                     <li class="nav-item " role="presentation">
                         <a class="nav-link active text-white font-weight-bold " href="{% url 'index' %}" style="font-size: 2rem!important;">
-                            News Checking     
+                            BN Checking     
                         </a>
                     </li>
+                </ul>
+
+                <ul class="ml-auto nav navbar-nav nav-right d-flex align-items-center">
+                    <li class="nav-item " role="presentation"><a class="btn nav-link  border border-dark" href="{% url 'index' %}" style="color: #000000;">Home</a></li>
                     <li class="nav-item " role="presentation"><a class="btn nav-link  border border-dark" href="{% url 'about' %}" style="color: #000000;">About Us</a></li>
                     <li class="nav-item " role="presentation">
                         <a class="btn nav-link border border-dark " href="{% url 'contact' %}" style="color: #000000;">Contact</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item " role="presentation">
+                        <a class="btn nav-link border border-dark " href="{% url 'index' %}" style="color: #000000;">{{user.username}}</a>
+                    </li>
+                    <li class="nav-item " role="presentation">
+                        <a class="btn nav-link border border-dark " href="{% url 'actionCrawler' %}" style="color: #000000;">Crawling</a>
+                    </li>
+                    <li class="nav-item " role="presentation">
+                        <a class="btn nav-link border border-dark " href="{% url 'logout' %}" style="color: #000000;">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item " role="presentation">
+                        <a class="btn nav-link border border-dark " href="{% url 'login' %}" style="color: #000000;">Login</a>
+                    </li>
+                    <li class="nav-item " role="presentation">
+                        <a class="btn nav-link border border-dark " href="{% url 'signup' %}" style="color: #000000;">Sign up</a>
+                    </li>
+                    {% endif %}
+                </li>
+
                 </ul>
             </div>
-            <p class="ml-auto navbar-text actions">
-                {% if user.is_authenticated %}
-                <a class="btn border border-dark mx-0 text-dark" href="{% url 'index' %}">{{user.username}}</a> 
-                <a class="btn border border-dark mx-0 text-dark" href="{% url 'actionCrawler' %}">Crawling</a> 
-                
-
-                <a class="btn border border-dark mx-0 text-dark" href="{% url 'logout' %}">Logout</a> {% else %}
-                <a class="btn border border-dark mx-0 text-dark" href="{% url 'login' %}">Login</a>
-                <a class="btn border border-dark mx-0 text-dark" href="{% url 'signup' %}">Sign Up</a> 
-                {% endif %}
-            </p>
         </div>
     </nav>
     <!-- ........................END.................... -->
